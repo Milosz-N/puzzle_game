@@ -7,12 +7,12 @@ function App() {
 
   const handleClick = event => {
     console.log(event.currentTarget.id);
-    if(arr.length == 0){
-      arr.push(event.currentTarget)
+    if(arr.length < 1){
+      arr.push(event.currentTarget.id)
       console.log(arr)
     }
     else{
-      arr.push(event.currentTarget);
+      arr.push(event.currentTarget.id);
       console.log(arr);
       changeid(arr);
       arr = [];
@@ -20,6 +20,7 @@ function App() {
   };
  function changeid(arr)
  {
+
   let buttons = document.querySelectorAll(".div");
   console.log(arr);
   console.log("jestem w funkcji");
@@ -27,11 +28,29 @@ function App() {
    console.log(Element.id)
   }
   for(Element of buttons){
-    if(Number.parseInt(Element.id) == Number.parseInt(arr[0].id) ||Number.parseInt(Element.id) == Number.parseInt(arr[1].id) ){
-      console.log(Element);
+    if(Element.id == arr[1] || Element.id == arr[0]){
+      if(Element.id== arr[1]) {
+        console.log(arr[1].id);
+        
+      // console.log(Element);
+      console.log("warunek 1");
+      console.log(arr[1])
+      console.log(Element.id)
+      Element.setAttribute('id',arr[0]);
+      console.log(Element)
+      }  
+       else if (Element.id == arr[0]){
+        // console.log(Element);
+        console.log(arr[0])
+        console.log("warunek drugi")
+      Element.setAttribute('id', arr[1]);
+      console.log(Element)
+      }
     }
-   }
+
 }
+   }
+
 
 
   return (
