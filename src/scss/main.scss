@@ -1,3 +1,17 @@
+.container{
+   width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#root{
+    background-image: linear-gradient(to right, #DECBA4, #3E5151);
+    height: 100vh;
+
+}
+
+
+
 .img-legend{
     width: 300px;
     height: 300px;
@@ -19,7 +33,97 @@ background: url("../images/image-1.jpg");
 .container-img{
     position: relative;
 }
+.container-pictrue{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+margin-bottom: 30px;
+}
 .flex{
     display: flex;
     flex-wrap: wrap;
+    margin: auto;
+    padding-top: 20px;
+    
+}
+
+//formularz
+
+.img-form{
+    width: 80%;
+    margin: auto;
+    border-radius: 25%;
+}
+.div-img:hover{
+    transform: scale(1.2);
+    transition-duration: 500ms;
+}
+.div-img{
+    width: 30%;
+    display: grid;
+    transition: transform 0.6s;
+}
+
+.label-legend{
+    width: 100%;
+display: inherit;
+}
+form{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    // width: 300px;
+    margin: auto;
+}
+
+input[type=text]{
+    all:unset;
+}
+label{
+
+    font-size: 18px;
+}
+.select{
+    width: 50px;
+}
+.button-start{
+    all: unset;
+    width: 120px;
+    height: 50px;
+    border-radius: 15%;
+    border: 0.7px solid black;
+    text-align: center;
+    padding: 5px;
+    // transition-duration: 500ms;
+    background: #c5a688;
+    transition-duration: 500ms;
+
+// #73ed75
+}
+.button-start:hover{
+    animation-duration: 1s;
+    animation-name: animationscale;
+    cursor: pointer;
+}
+
+// .button-start:not(:hover){
+//     animation-duration: 1s;
+//     animation-name: animationback;
+// }
+@keyframes animationback {
+    0% {
+      background: #c5e988;
+    }
+    100% {
+      background:#c5a688;
+    }
+  }
+@keyframes animationscale {
+  0% {
+    background: #c5a688;
+  }
+  100% {
+    background:#c5e988;
+  }
 }
