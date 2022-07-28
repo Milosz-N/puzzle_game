@@ -23,11 +23,22 @@
     height: 600px !important;
 }
 .div{
-   width: 50px;
-   height: 50px;
-//   width: unset !important;
-//   height: unset !important;
+  border: 1px solid black;
+  margin: 1px;
+
 background: url("../images/image-1.jpg");
+
+}
+.background-one{
+    background: url("../images/image-1.jpg");
+
+}
+.background-two{
+    background: url("../images/image-2.jpg");
+
+}
+.background-three{
+    background: url("../images/image-3.jpg");
 
 }
 .container-img{
@@ -45,9 +56,13 @@ margin-bottom: 30px;
     flex-wrap: wrap;
     margin: auto;
     padding-top: 20px;
+    justify-content: center;
     
 }
-
+.finish{
+    margin: 0 !important;
+    border: unset !important;
+}
 //formularz
 
 .img-form{
@@ -106,7 +121,10 @@ label{
     animation-name: animationscale;
     cursor: pointer;
 }
-
+.border{
+    border:2px solid blue;
+    margin: 0;
+}
 // .button-start:not(:hover){
 //     animation-duration: 1s;
 //     animation-name: animationback;

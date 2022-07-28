@@ -3,15 +3,13 @@ function Form({ info, setInfo, startgame, setStartgame }) {
   // console.log(arrcheck);
   const postDataHandler = (e) => {
     e.preventDefault();
-    console.log(info.amount);
-    console.log(info.img)
+  
     // console.log("jestem w funkcji");
     if (info.amount != ""  && info.img != "") {
     //   setStartgame(true);
       setStartgame(() => {
         return (true);
       });
-      console.log("zaczynam gre");
     }
   };
 console.log(startgame)
