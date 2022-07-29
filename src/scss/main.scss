@@ -25,10 +25,46 @@
 .div{
   border: 1px solid black;
   margin: 1px;
+  position: relative;
+
 
 background: url("../images/image-1.jpg");
-
+// animation-duration: 1s;
+// animation-name: positon;
 }
+
+@keyframes positon {
+    0% {
+        transform: translate(300px, 0px);
+    }
+   
+   
+        100% {
+            transform: translate(0px, 0px);
+
+            position: relative;
+              }
+  }
+  .animationtwo{
+    // animation-duration: 2s;
+    animation-name: positontwo;
+    // left: -300px;
+    // transform: translate(300px, 0px);
+}
+@keyframes positontwo {
+    0% {
+        transform: translate(-300px, 0px);
+    }
+   
+   
+        100% {
+            transform: translate(0px, 0px);
+
+            position: relative;
+              }
+  }
+
+
 .background-one{
     background: url("../images/image-1.jpg");
 
@@ -124,6 +160,7 @@ label{
 .border{
     border:2px solid blue;
     margin: 0;
+    position: relative;
 }
 // .button-start:not(:hover){
 //     animation-duration: 1s;
@@ -144,4 +181,8 @@ label{
   100% {
     background:#c5e988;
   }
+}
+
+.xd{
+    color: red;
 }

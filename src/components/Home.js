@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
 import Form from "./Form";
+import Transition from "./Transsition";
+
 function Home() {
-  const [info, setInfo] = useState({  amount: "", img: "" });
-  const [startgame, setStartgame] = useState(false);
+  const [info, setInfo] = useState({  amount: 16, img: 1 });
+  const [startgame, setStartgame] = useState(true);
   const [counter, setCounter] = useState(0);
   const [finish, setFinish] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -48,6 +50,8 @@ function Home() {
      <h2>Wygrałeś</h2>
      : <></>
     }
+    <hr/>
+    <Transition/>
     </>
   );
 }
