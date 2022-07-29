@@ -4,7 +4,7 @@ import Form from "./Form";
 import Transition from "./Transsition";
 
 function Home() {
-  const [info, setInfo] = useState({  amount: 16, img: 1 });
+  const [info, setInfo] = useState({  amount: 9, img: 1 });
   const [startgame, setStartgame] = useState(true);
   const [counter, setCounter] = useState(0);
   const [finish, setFinish] = useState(false);

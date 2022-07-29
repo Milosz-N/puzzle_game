@@ -3,11 +3,12 @@ import React, { useState, useEffect, useTransition } from "react";
 import Game from "./Game";
 import "../scss/main.scss";
 import {imageone} from "../images/image-1.jpg"
+import { useForceUpdate } from "@react-spring/shared";
 // import {a} from "../src/images"
 function Board({amount, img, counter, setCounter, finish, setFinish, startgame}) {
   // console.log(img)
   const [cardwidth, setCardwidth] = useState(0) //zmienic tutaj maksymalna szerokosc
-   
+   const [time, setTime] = useState(0)
   useEffect(() => {
     let x = 0;
    if(counter%2==false && counter > 0){
@@ -149,48 +150,79 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
     // console.log(Number.parseInt(arrkey[1]/Math.pow(amount, 0.5)));
     let a = Number.parseInt(arrkey[0]/Math.pow(amount, 0.5));
     let b = Number.parseInt(arrkey[1]/Math.pow(amount, 0.5));
-    console.log(a);
-    console.log(b);
-    console.log(Number.parseInt(buttons[0].style.width) * (a-b))
+   
+
+    setTime(Math.abs(a-b) * 1000)
+    // console.log(Number.parseInt(buttons[0].style.width) * (a-b))
     // let y = a-b;
     let c =Number.parseInt(buttons[0].style.width) * (a-b);
 
     let d = c+`px`;
-    let e = (c*(-1) + `px`)
-    // console.log(y);
-    // console.log(buttons[0].style.width);
-    // console.log(Number.parseInt(buttons[0].style.width) * y)
-    if(Number.parseInt(arrkey[0]) >Number.parseInt( arrkey[1])){
-      console.log("jestem na warunku gdzie pierwszy element ma wyzszy key");
-      console.log(a-b);
-      // console.log(Number.parseInt(arrkey[0]/Math.pow(amount, 0.5))-(Number.parseInt(arrkey[1]/Math.pow(amount, 0.5))));
-      // x = Number.parseInt(arrkey[0]/Math.pow(amount, 0.5))-(Number.parseInt(arrkey[1]/Math.pow(amount, 0.5)))
-    }
-    else{
-      console.log("jestem na warunku gdzie pierwszy ma nizszy key");
-      console.log(a-b);
-
-      // console.log(Number.parseInt(arrkey[0]/Math.pow(amount, 0.5))-(Number.parseInt(arrkey[1]/Math.pow(amount, 0.5))));
-      // x = Number.parseInt(arrkey[0]/Math.pow(amount, 0.5))-(Number.parseInt(arrkey[1]/Math.pow(amount, 0.5)))
-    }
-    // console.log(buttons[0].style.height);
+    let e = (c*(-1) + `px`);
+    let f = Number.parseInt(arrkey[0]%(Math.pow(amount, 0.5)) * c);
+    let g = f + `px`;
+    let h= Number.parseInt(arrkey[1]%(Math.pow(amount, 0.5)) * c);
+    let j = h+`px`;
+    // console.log(g);
+    // console.log(j)
+    // console.log(arrkey[1]%(Math.pow(amount, 0.5)) )
+    // console.log(arrkey[0]%(Math.pow(amount, 0.5)) )
+    // console.log(arrkey[0]%Math.pow(amount, 0.5));
+    // console.log(arrkey[1]%Math.pow(amount, 0.5));
+    let k =( arrkey[0]%Math.pow(amount, 0.5) * Number.parseInt(buttons[0].style.width)) + `px`
+    let l =( arrkey[1]%Math.pow(amount, 0.5) * Number.parseInt(buttons[1].style.width)) + `px`;
+// let k = Number.parseInt(l) * (-1)+`px`
+    // console.log(arrkey[0]%(Math.pow(amount, 0.5)))
+    // console.log(arrkey[1]%Math.pow(amount, 0.5))
+    // console.log(Math.pow(amount, 0.5));
+    // console.log(arrkey[0]%3);
+    // console.log(Math.pow(amount, 0.5));
+    console.log(arrkey[0]%(Math.pow(amount, 0.5)));
+    console.log(arrkey[1]%(Math.pow(amount, 0.5)));
+    let m = (Number.parseInt(arrkey[0]%(Math.pow(amount, 0.5))) - Number.parseInt(arrkey[1]%(Math.pow(amount, 0.5)))) * Number.parseInt(buttons[0].style.width)  + `px` 
+    let n = (Number.parseInt(m)) * (-1) +`px`
+    console.log(n);
+    console.log(m);
+    console.log("tak  dobrze");
+    console.log(d);
     const newspaperSpinning = [
-      { transform: `${`translateY(${d})`}`},
-      // { transform: `${`translateY(300)`}`},
+      { 
+        // transform: `${`translateX(${m})`}`,
+        // transform: `${`translateY(${d})`}`,
+        transform: `${`translate(${m},${d}`}`,
+    },
 
-      { transform: 'translate(0)' },
+      { transform: 'translate(0)',
+
+    },
       
     ];
+    let u;
+    if(arrkey[0] > arrkey[1]){
+      u = m
+    }
+    else{
+      u = n
+    }
     const newspaperSpinningsecond = [
-      { transform: `${`translateY(${e})`}`},
-      // { transform: `${`translateY(300)`}`},
+      { 
+        // transform: `${`translateY(${e})`}`,
+        // transform: `${`translateX(${n})`}`,
+        transform: `${`translate(${n},${e})`}`,
+        //ten jest poprawny
 
-      { transform: 'translate(0)' },
+
+
+    },
+
+      { transform: 'translate(0)' ,
+
+    },
       
     ];
     
     const newspaperTiming = {
-      duration: 2000,
+      duration: 5000,
       iterations: 1,
     }
    

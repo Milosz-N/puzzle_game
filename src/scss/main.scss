@@ -33,36 +33,6 @@ background: url("../images/image-1.jpg");
 // animation-name: positon;
 }
 
-@keyframes positon {
-    0% {
-        transform: translate(300px, 0px);
-    }
-   
-   
-        100% {
-            transform: translate(0px, 0px);
-
-            position: relative;
-              }
-  }
-  .animationtwo{
-    // animation-duration: 2s;
-    animation-name: positontwo;
-    // left: -300px;
-    // transform: translate(300px, 0px);
-}
-@keyframes positontwo {
-    0% {
-        transform: translate(-300px, 0px);
-    }
-   
-   
-        100% {
-            transform: translate(0px, 0px);
-
-            position: relative;
-              }
-  }
 
 
 .background-one{
