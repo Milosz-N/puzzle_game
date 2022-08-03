@@ -1,25 +1,16 @@
-import React, { useState, useEffect, useTransition } from "react";
+import React, { useState, useEffect } from "react";
 // import Game from './components/Game';
 import Game from "./Game";
 import "../scss/main.scss";
-import {imageone} from "../images/image-1.jpg"
-import { useForceUpdate } from "@react-spring/shared";
+
 // import {a} from "../src/images"
 function Board({amount, img, counter, setCounter, finish, setFinish, startgame}) {
-  // console.log(img)
   const [cardwidth, setCardwidth] = useState(0) //zmienic tutaj maksymalna szerokosc
-   const [time, setTime] = useState(0)
+  const [game, setGame] = useState([]);
   useEffect(() => {
     let x = 0;
    if(counter%2==false && counter > 0){
-    // console.log("spelniam warunek w useeffect");
     let div = document.querySelectorAll(".div");
-    // for(Element of div){
-    //   if(Element.classList.contains("border")){
-    //     console.log(Element);
-    //     Element.classList.add("animation")
-    //   }
-    // }
     for(Element of div){
   
       if(Number.parseInt(Element.attributes.id.value) === Number.parseInt(Element.attributes.key.value)){
@@ -42,15 +33,12 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
   }, [counter]);
  
   let widthmax = 630;
-  const [game, setGame] = useState([]);
-  // const [startgame, setstartgame] = useState(false);
   let arr = [];
   let arrpositionx = [];
   let arrpositiony = [];
   let arrkey =[];
   const handleClick = (event) => {
     let div = document.querySelectorAll(".div");
-    // console.log(event.currentTarget.attributes.key.value)
     if (arr.length < 1) {
       for(Element of div){
         if(Element.attributes.id == arr[0]){
@@ -60,7 +48,6 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
       for(Element of div){
         if(Element.classList.contains("border")){
           Element.classList.remove("border")
-          // console.log(Element);
         }
       }
       arr.push(event.currentTarget.id);
@@ -71,7 +58,6 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
       for(Element of div){
         if(Element.attributes.id.value == arr[0]){
           Element.classList.add("border")
-          // console.log(Element);
         }
       }
     } 
@@ -81,14 +67,13 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
       for(Element of div){
         if(Element.attributes.id.value == arr[1]){
           Element.classList.add("border")
-          // console.log(Element);
         }
       }
       arrkey.push(event.currentTarget.attributes.key.value)
 
       arrpositionx.push(event.currentTarget.style.backgroundPositionX);
       arrpositiony.push(event.currentTarget.style.backgroundPositionY);
-      changeid(arr, arrpositionx, arrpositiony,arrkey);
+      changeid(arr, arrpositionx, arrpositiony,arrkey, finish);
       arr = [];
       arrpositionx = [];
       arrpositiony = [];
@@ -142,19 +127,15 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
       })
     );
   }
-  function changeid(arr, arrpositionx, arrpositiony, arrkey) {
-    // console.log(arrkey)
+  function changeid(arr, arrpositionx, arrpositiony, arrkey, finish) {
+    console.log(finish)
     let buttons = document.querySelectorAll(".div");
-    console.log("jestem w funkcji");
-    // console.log(Number.parseInt(arrkey[0]/Math.pow(amount, 0.5)));
-    // console.log(Number.parseInt(arrkey[1]/Math.pow(amount, 0.5)));
+   
     let a = Number.parseInt(arrkey[0]/Math.pow(amount, 0.5));
     let b = Number.parseInt(arrkey[1]/Math.pow(amount, 0.5));
    
 
-    setTime(Math.abs(a-b) * 1000)
-    // console.log(Number.parseInt(buttons[0].style.width) * (a-b))
-    // let y = a-b;
+  
     let c =Number.parseInt(buttons[0].style.width) * (a-b);
 
     let d = c+`px`;
@@ -163,33 +144,17 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
     let g = f + `px`;
     let h= Number.parseInt(arrkey[1]%(Math.pow(amount, 0.5)) * c);
     let j = h+`px`;
-    // console.log(g);
-    // console.log(j)
-    // console.log(arrkey[1]%(Math.pow(amount, 0.5)) )
-    // console.log(arrkey[0]%(Math.pow(amount, 0.5)) )
-    // console.log(arrkey[0]%Math.pow(amount, 0.5));
-    // console.log(arrkey[1]%Math.pow(amount, 0.5));
+   
     let k =( arrkey[0]%Math.pow(amount, 0.5) * Number.parseInt(buttons[0].style.width)) + `px`
     let l =( arrkey[1]%Math.pow(amount, 0.5) * Number.parseInt(buttons[1].style.width)) + `px`;
-// let k = Number.parseInt(l) * (-1)+`px`
-    // console.log(arrkey[0]%(Math.pow(amount, 0.5)))
-    // console.log(arrkey[1]%Math.pow(amount, 0.5))
-    // console.log(Math.pow(amount, 0.5));
-    // console.log(arrkey[0]%3);
-    // console.log(Math.pow(amount, 0.5));
-    console.log(arrkey[0]%(Math.pow(amount, 0.5)));
-    console.log(arrkey[1]%(Math.pow(amount, 0.5)));
+
     let m = (Number.parseInt(arrkey[0]%(Math.pow(amount, 0.5))) - Number.parseInt(arrkey[1]%(Math.pow(amount, 0.5)))) * Number.parseInt(buttons[0].style.width)  + `px` 
     let n = (Number.parseInt(m)) * (-1) +`px`
-    console.log(n);
-    console.log(m);
-    console.log("tak  dobrze");
-    console.log(d);
+    
     const newspaperSpinning = [
       { 
-        // transform: `${`translateX(${m})`}`,
-        // transform: `${`translateY(${d})`}`,
-        transform: `${`translate(${m},${d}`}`,
+       
+        transform: `${`translate(${m},${d})`}`,
     },
 
       { transform: 'translate(0)',
@@ -205,9 +170,8 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
       u = n
     }
     const newspaperSpinningsecond = [
-      { 
-        // transform: `${`translateY(${e})`}`,
-        // transform: `${`translateX(${n})`}`,
+      { className: "xd",
+       
         transform: `${`translate(${n},${e})`}`,
         //ten jest poprawny
 
@@ -222,7 +186,7 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
     ];
     
     const newspaperTiming = {
-      duration: 5000,
+      duration: 1000,
       iterations: 1,
     }
    
@@ -249,7 +213,8 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
           // console.log(Element)
         }
       }
-    }
+    
+  }
   }
 
   return (
@@ -257,7 +222,6 @@ function Board({amount, img, counter, setCounter, finish, setFinish, startgame})
       <div className="flex" style={{ maxWidth: `${widthmax}` + `px` }}>
         <Game board={arrelements} game={game} setGame={setGame} img={img} />
       </div>
-      {/* <h2>{ww}</h2> */}
 
     </>
   );

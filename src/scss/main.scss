@@ -2,6 +2,7 @@
    width: 100%;
     margin-left: auto;
     margin-right: auto;
+padding-top: 20px;
 
 }
 #root{
@@ -61,7 +62,6 @@ margin-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
-    padding-top: 20px;
     justify-content: center;
     
 }
@@ -91,9 +91,8 @@ margin-bottom: 30px;
 display: inherit;
 }
 form{
-    display: flex;
+    display: grid;
     justify-content: space-around;
-    flex-wrap: wrap;
     // width: 300px;
     margin: auto;
 }
@@ -106,8 +105,11 @@ label{
     font-size: 18px;
 }
 .select{
-    width: 50px;
-}
+    width: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;}
 .button-start{
     all: unset;
     width: 120px;
@@ -131,6 +133,7 @@ label{
     border:2px solid blue;
     margin: 0;
     position: relative;
+    z-index: 2;
 }
 // .button-start:not(:hover){
 //     animation-duration: 1s;
@@ -154,5 +157,37 @@ label{
 }
 
 .xd{
-    color: red;
+z-index: 10;}
+
+.image-finish{
+    width: 600px;
+    height: 600px;
+
+    background: url("../images/image-1.jpg");
+    margin: auto;
+    animation-duration: 1s;
+    animation-name: change;
+    animation-timing-function: linear;
+    display: flex;
+justify-content: center;
+align-items: center;
+    
+
 }
+.image-finish div{
+    width: 150px;
+display: grid;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+}
+@keyframes change {
+    0% {
+        transform:rotateX(3050deg) rotateY(2080deg) rotateZ(1080deg) scale(0.5) ;
+        }
+      100% {
+        transform: rotateZ(0deg) scale(1);
+        
+    }
+  }

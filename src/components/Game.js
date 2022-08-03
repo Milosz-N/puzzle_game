@@ -14,8 +14,7 @@ function Game({ board, game, setGame }) {
     let a = document.querySelectorAll(".div");
 
     for(let x  = 0; x <a.length; x++){
-      // console.log(a[x])
-      // console.log(a[x]._owner.return);
+     
       a[x].setAttribute('key',x);
     }
   }, [game]);

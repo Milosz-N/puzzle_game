@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
 import Form from "./Form";
-import Transition from "./Transsition";
 
 function Home() {
-  const [info, setInfo] = useState({  amount: 9, img: 1 });
-  const [startgame, setStartgame] = useState(true);
+  const [info, setInfo] = useState({  amount: "", img: 1 });
+  const [startgame, setStartgame] = useState(false);
   const [counter, setCounter] = useState(0);
   const [finish, setFinish] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -36,7 +35,23 @@ function Home() {
         setStartgame={setStartgame}
         
       />
-     : <Board
+     :  finish == true ? 
+     <>
+     <div className="image-finish">
+      <div>
+     <h2>Wygrałeś</h2>
+     <button className="button-start"
+     onClick={()=> {
+      setStartgame(false);
+      setFinish(false)
+     }}
+            
+            >Rozpocznij nową grę</button>
+           </div>
+            </div>
+     </>
+      : <>
+      <Board
      amount={info.amount}
      img = {info.img}
      counter={counter}
@@ -45,13 +60,10 @@ function Home() {
      setFinish={setFinish}
      startgame={startgame}
      />
-    }
-     {finish == true ? 
-     <h2>Wygrałeś</h2>
-     : <></>
-    }
-    <hr/>
-    <Transition/>
+      </>
+     
+}
+    
     </>
   );
 }

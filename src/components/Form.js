@@ -77,7 +77,7 @@ console.log(startgame)
               }}
             />
             </div>
-            <label className="label-legend">Wybierz zdjęcie:</label>
+            {/* <label className="label-legend">Wybierz zdjęcie:</label>
             </div>
               <div className="container-pictrue">
               <div className="div-img">
@@ -131,7 +131,7 @@ console.log(startgame)
           
             <label>
               <img  src={require("../images/image-2.jpg").default} />
-            </label>
+            </label> */}
 
           
           </div>
