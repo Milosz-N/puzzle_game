@@ -2,6 +2,8 @@
 This is a traditional puzzle game
 When you click on an item, a blue background will appear. When you click on another item, the selected items will swap positions.
 The game will end when all the pieces will be in position before mixing
+[Demo](https://puzzle-game-eosin.vercel.app)
+
 ---
 
 

@@ -7,7 +7,6 @@ function Home() {
   const [startgame, setStartgame] = useState(false);
   const [counter, setCounter] = useState(0);
   const [finish, setFinish] = useState(false);
-  const [seconds, setSeconds] = useState(0);
   
   useEffect(() => {
     // console.log("spelniam warunek w useeffect");
